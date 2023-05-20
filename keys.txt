@@ -1,0 +1,10 @@
+
+This keys are for client site: ( .env.local )
+
+REACT_APP_apiKey=AIzaSyDuBbG1-s7hNyvUqV84k41Hb7HVie81kR0
+REACT_APP_authDomain=doctors-portal-389e5.firebaseapp.com
+REACT_APP_projectId=doctors-portal-389e5
+REACT_APP_storageBucket=doctors-portal-389e5.appspot.com
+REACT_APP_messagingSenderId=741353695117
+REACT_APP_appId=1:741353695117:web:582d6b62a9feeb59f2ffc4
+REACT_APP_imgbbKey=4a64cfe616aabd80e519c0db92a3633a
