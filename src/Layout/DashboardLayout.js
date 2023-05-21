@@ -9,7 +9,7 @@ const DashboardLayout = () => {
   const [isAdmin] = useAdmin(user?.email);
 
   const list = (
-    <ul className="menu p-4 mt-14 w-80 text-base-content">
+    <ul className="menu p-4 mt-14 w-80 bg-base-100 text-base-content">
       <li>
         <Link to="/dashboard">My Appoinments</Link>
       </li>

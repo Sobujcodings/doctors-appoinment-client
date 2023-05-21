@@ -15,9 +15,7 @@ const AddDoctors = () => {
   const { data: specialties = [] } = useQuery({
     queryKey: ["appoinmentSpecialty"],
     queryFn: async () => {
-      const res = await fetch(
-        "https://doctors-portal-server-instasif.vercel.app/appoinmentSpecialty"
-      );
+      const res = await fetch("http://localhost:5000/appoinmentSpecialty");
       const data = res.json();
       return data;
     },
@@ -44,7 +42,7 @@ const AddDoctors = () => {
         };
 
         //? save doctors info to the database
-        fetch("https://doctors-portal-server-instasif.vercel.app/doctors", {
+        fetch("http://localhost:5000/doctors", {
           method: "POST",
           headers: {
             "content-type": "application/json",

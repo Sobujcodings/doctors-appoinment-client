@@ -5,9 +5,7 @@ export const useToken = (email) => {
 
   useEffect(() => {
     if (email) {
-      fetch(
-        `https://doctors-portal-server-instasif.vercel.app/jwt?email=${email}`
-      )
+      fetch(`http://localhost:5000/jwt?email=${email}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.accessToken) {

@@ -57,7 +57,7 @@ const Signup = () => {
 
   const saveUser = (name, email, number) => {
     const user = { name, email, number };
-    fetch("https://doctors-portal-server-instasif.vercel.app/users", {
+    fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
