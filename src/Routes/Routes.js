@@ -12,6 +12,7 @@ import Allusers from "../Pages/Dashboard/AllUsers/Allusers";
 import AdminRoute from "./AdminRoute";
 import AddDoctors from "../Pages/Dashboard/AddDoctors/AddDoctors";
 import ManageDoctors from "../Pages/Dashboard/ManageDoctors/ManageDoctors";
+import AllBookings from "../Pages/Dashboard/AllBookings/AllBookings";
 
 export const router = createBrowserRouter([
   {
@@ -70,10 +71,18 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/manageDoctors",
+        path: "/dashboard/manageDoctors", //
         element: (
           <AdminRoute>
             <ManageDoctors />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allbookings",
+        element: (
+          <AdminRoute>
+            <AllBookings />
           </AdminRoute>
         ),
       },

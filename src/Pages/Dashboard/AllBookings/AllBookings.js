@@ -4,32 +4,28 @@ import Spinner from "../../../Componants/Spinner/Spinner";
 import ConfirmModal from "../../Shared/ConfirmModal/ConfirmModal";
 import { toast } from "react-hot-toast";
 
-const ManageDoctors = () => {
-  const [deletingDoctor, setDeletingDoctor] = useState(null);
-
+const AllBookings = () => {
+  const [allBooking, setAllBooking] = useState(null);
   const closeModal = () => {
-    setDeletingDoctor(null);
+    setAllBooking(null);
   };
-
-  const {
-    data: doctors,
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: "doctors",
+  const url = "http://localhost:5000/allBookings";
+  const { data: allBookings, isLoading, refetch } = useQuery({
+    queryKey: ["allBookings"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/doctors", {
+      const res = await fetch(url, {
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
       });
-      const data = res.json();
+      const data = await res.json();
       return data;
     },
   });
 
-  const handleDeleteDoctor = (doctor) => {
-    fetch(`http://localhost:5000/doctors/${doctor?._id}`, {
+  const handleDeleteAppoinment = (appoinment) => {
+    console.log(appoinment);
+    fetch(`http://localhost:5000/allBookings/${appoinment?._id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -38,7 +34,7 @@ const ManageDoctors = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
-          toast.success(`Successfully deleted Dr. ${doctor.name}`);
+          toast.success(`Successfully deleted Dr. ${appoinment.patient}`);
         }
         refetch();
       });
@@ -47,38 +43,35 @@ const ManageDoctors = () => {
   if (isLoading) {
     return <Spinner />;
   }
+
   return (
     <div className="mt-[7%]">
-      <p className="text-3xl mb-5">Manage Doctors: {doctors?.length}</p>
+      <h2 className="text-3xl mb-5">All The Bookings</h2>
 
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
             <tr>
               <th></th>
-              <th>Photo</th>
               <th>Name</th>
-              <th>Specialty</th>
-              <th>Email</th>
+              <th>Treatment</th>
+              <th>Date</th>
+              <th>Time</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            {doctors?.map((doctor, index) => (
+            {allBookings?.map((booking, index) => (
               <tr key={index}>
                 <th>{index + 1}</th>
-                <td className="avatar placeholder">
-                  <div className="rounded-full w-12">
-                    <img src={doctor?.photo} alt="doctor" />
-                  </div>
-                </td>
-                <td>{doctor?.name}</td>
-                <td>{doctor?.specialty}</td>
-                <td>{doctor?.email}</td>
+                <td>{booking?.patient}</td>
+                <td>{booking?.treatment}</td>
+                <td>{booking?.appoinmentDate}</td>
+                <td>{booking?.slot}</td>
                 <td>
                   <label
                     htmlFor="confirmationModal"
-                    onClick={() => setDeletingDoctor(doctor)}
+                    onClick={() => setAllBooking(booking)}
                     className="btn btn-xs bg-red-600 text-white border-none"
                   >
                     Delete
@@ -89,13 +82,12 @@ const ManageDoctors = () => {
           </tbody>
         </table>
       </div>
-      {deletingDoctor && (
+      {allBooking && (
         <ConfirmModal
           title={`Are you sure you want to delete?`}
-          message={`If you delete Dr. ${deletingDoctor?.name} It can't be recover it.`}
           closeModal={closeModal}
-          handleDelete={handleDeleteDoctor}
-          modalData={deletingDoctor}
+          modalData={allBooking}
+          handleDelete={handleDeleteAppoinment}
           successBtnName={"delete"}
           closeBtnName={"cancel"}
         />
@@ -104,4 +96,4 @@ const ManageDoctors = () => {
   );
 };
 
-export default ManageDoctors;
+export default AllBookings;

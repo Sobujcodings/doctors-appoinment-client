@@ -4,7 +4,7 @@ const ConfirmModal = ({
   title,
   message,
   closeModal,
-  handleDeleteDoctor,
+  handleDelete,
   modalData,
   successBtnName,
   closeBtnName,
@@ -18,7 +18,7 @@ const ConfirmModal = ({
           <p className="py-4">{message}</p>
           <div className="modal-action">
             <label
-              onClick={() => handleDeleteDoctor(modalData)}
+              onClick={() => handleDelete(modalData)}
               htmlFor="confirmationModal"
               className="btn bg-red-600 text-white"
             >
