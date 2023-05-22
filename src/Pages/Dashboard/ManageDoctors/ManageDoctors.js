@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Spinner from "../../../Componants/Spinner/Spinner";
 import ConfirmModal from "../../Shared/ConfirmModal/ConfirmModal";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const ManageDoctors = () => {
+  const {user} = useContext(AuthContext);
   const [deletingDoctor, setDeletingDoctor] = useState(null);
 
   const closeModal = () => {
@@ -18,22 +20,25 @@ const ManageDoctors = () => {
   } = useQuery({
     queryKey: "doctors",
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/doctors", {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+      const res = await fetch(
+        `http://localhost:5000/doctors?email=${user?.email}`,
+        {
+          // headers: {
+          //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          // },
+        }
+      );
       const data = res.json();
       return data;
     },
   });
 
   const handleDeleteDoctor = (doctor) => {
-    fetch(`http://localhost:5000/doctors/${doctor?._id}`, {
+    fetch(`http://localhost:5000/doctors/${doctor?._id}?email=${user?.email}`, {
       method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
+      // headers: {
+      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      // },
     })
       .then((res) => res.json())
       .then((data) => {

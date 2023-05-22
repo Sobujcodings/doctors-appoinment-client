@@ -1,25 +1,25 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import GoogleBtn from "../../Componants/GoogleBtn/GoogleBtn";
 import FbBtn from "../../Componants/FbBtn/FbBtn";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import { toast } from "react-hot-toast";
-import { useToken } from "../../hooks/useToken";
+// import { useToken } from "../../hooks/useToken";
 
 const Signup = () => {
   const { signUp, updateUser } = useContext(AuthContext);
-  const [createdEmail, setCreatedEmail] = useState("");
+  // const [createdEmail, setCreatedEmail] = useState("");
 
   //! navigate <<<<--------------
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
 
-  const [token] = useToken(createdEmail);
-  if (token) {
-    navigate(from, { replace: true });
-  }
+  // const [token] = useToken(createdEmail);
+  // if (token) {
+  //   navigate(from, { replace: true });
+  // }
 
   //! react hook form
   const {
@@ -66,7 +66,8 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setCreatedEmail(email);
+        // setCreatedEmail(email);
+        navigate(from, { replace: true });
       });
   };
 

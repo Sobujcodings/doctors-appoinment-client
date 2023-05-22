@@ -1,22 +1,28 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Spinner from "../../../Componants/Spinner/Spinner";
 import ConfirmModal from "../../Shared/ConfirmModal/ConfirmModal";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const AllBookings = () => {
+  const { user } = useContext(AuthContext);
   const [allBooking, setAllBooking] = useState(null);
   const closeModal = () => {
     setAllBooking(null);
   };
-  const url = "http://localhost:5000/allBookings";
-  const { data: allBookings, isLoading, refetch } = useQuery({
+  const url = `http://localhost:5000/allBookings?email=${user?.email}`;
+  const {
+    data: allBookings,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["allBookings"],
     queryFn: async () => {
       const res = await fetch(url, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
+        // headers: {
+        //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        // },
       });
       const data = await res.json();
       return data;
@@ -25,12 +31,15 @@ const AllBookings = () => {
 
   const handleDeleteAppoinment = (appoinment) => {
     console.log(appoinment);
-    fetch(`http://localhost:5000/allBookings/${appoinment?._id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `http://localhost:5000/allBookings/${appoinment?._id}?email=${user?.email}`,
+      {
+        method: "DELETE",
+        // headers: {
+        //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        // },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {

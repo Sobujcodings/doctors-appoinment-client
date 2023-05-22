@@ -1,23 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleBtn from "../../Componants/GoogleBtn/GoogleBtn";
 import FbBtn from "../../Componants/FbBtn/FbBtn";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import { toast } from "react-hot-toast";
-import { useToken } from "../../hooks/useToken";
+// import { useToken } from "../../hooks/useToken";
 
 const Login = () => {
   const { logIn } = useContext(AuthContext);
-  const [loginEmail, setLoginEmail] = useState("");
+  // const [loginEmail, setLoginEmail] = useState("");
   
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
-  const [token] = useToken(loginEmail);
-  if (token) {
-    navigate(from, { replace: true });
-  }
+  // const [token] = useToken(loginEmail);
+  // if (token) {
+  //   navigate(from, { replace: true });
+  // }
 
   const {
     register,
@@ -30,9 +30,10 @@ const Login = () => {
     logIn(email, password)
       .then((res) => {
         const user = res.user;
-        setLoginEmail(user?.email);
+        // setLoginEmail(user?.email);
         if (user?.uid) {
           toast.success("Successfully login");
+          navigate(from, { replace: true });
         }
       })
       .catch((err) => {

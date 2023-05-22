@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import Spinner from "../../../Componants/Spinner/Spinner";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const Allusers = () => {
+  const { user } = useContext(AuthContext);
   const {
     data: users,
     isLoading,
@@ -18,11 +20,11 @@ const Allusers = () => {
   });
 
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`http://localhost:5000/users/admin/${id}?email=${user?.email}`, {
       method: "PUT",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
+      // headers: {
+      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      // },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -34,11 +36,11 @@ const Allusers = () => {
   };
 
   const handleDeleteUser = (id) => {
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`http://localhost:5000/users/${id}?email=${user?.email}`, {
       method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
+      // headers: {
+      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      // },
     })
       .then((res) => res.json())
       .then((data) => {

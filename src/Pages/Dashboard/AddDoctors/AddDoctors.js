@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const AddDoctors = () => {
+  const {user} = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -42,11 +44,11 @@ const AddDoctors = () => {
         };
 
         //? save doctors info to the database
-        fetch("http://localhost:5000/doctors", {
+        fetch(`http://localhost:5000/doctors?email=${user?.email}`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
-            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            // authorization: `bearer ${localStorage.getItem("accessToken")}`,
           },
           body: JSON.stringify(doctor),
         })
