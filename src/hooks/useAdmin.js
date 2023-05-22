@@ -8,6 +8,7 @@ export const useAdmin = (email) => {
         .then((res) => res.json())
         .then((data) => {
           if (data) {
+            console.log(data);
             setIsAdmin(data.isAdmin);
             setIsAdminLoading(false);
           }
