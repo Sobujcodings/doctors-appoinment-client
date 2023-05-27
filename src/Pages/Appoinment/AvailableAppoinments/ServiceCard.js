@@ -1,12 +1,13 @@
 import React from "react";
 
 const ServiceCard = ({ service, setTreatment }) => {
-  const { name, slots } = service;
+  const {index, name, slots } = service;
   return (
     <div className="card w-[425px] shadow-xl">
       <div className="card-body  text-center">
         <h2 className="text-2xl text-secondary font-semibold">{name}</h2>
         <p>{slots.length > 0 ? slots[0] : "Try another day!"}</p>
+        <p>Dr.Poresh Shill {index}</p>
         <p>
           {slots.length} {slots.length > 1 ? "spaces" : "space"} available
         </p>

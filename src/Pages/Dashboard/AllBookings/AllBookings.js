@@ -79,7 +79,7 @@ const AllBookings = () => {
                 <td>{booking?.slot}</td>
                 <td>
                   <label
-                    htmlFor="confirmationModal"
+                    // htmlFor="confirmationModal"
                     onClick={() => setAllBooking(booking)}
                     className="btn btn-xs bg-red-600 text-white border-none"
                   >

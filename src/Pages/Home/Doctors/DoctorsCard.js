@@ -2,6 +2,7 @@ import React from "react";
 
 const DoctorsCard = ({ doctor }) => {
   const { name, specialty, photo } = doctor;
+  
   return (
     <a href="/" className="group relative block bg-black">
       <img

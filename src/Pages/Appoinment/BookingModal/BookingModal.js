@@ -47,7 +47,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
   };
 
   return (
-    <>
+    <div>
       <input type="checkbox" id="appoinmentModal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
@@ -58,6 +58,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
             ✕
           </label>
           <h3 className="text-lg font-bold">{name}</h3>
+
           <form
             className="mx-4 grid grid-cols-1 gap-3 my-5"
             onSubmit={handleSubmit}
@@ -112,7 +113,8 @@ const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
           </form>
         </div>
       </div>
-    </>
+
+    </div>
   );
 };
 

@@ -26,6 +26,9 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li className="">
+        <Link to="/contact">Contack Us</Link>
+      </li>
+      <li className="">
         <Link to="/appoinment">Appoinment</Link>
       </li>
       {user?.uid ? (
@@ -43,6 +46,7 @@ const Navbar = () => {
         </li>
       )}
     </>
+
   );
   return (
     <>
@@ -99,6 +103,7 @@ const Navbar = () => {
             />
           </svg>
         </label>
+        
 
       </div>
     </>

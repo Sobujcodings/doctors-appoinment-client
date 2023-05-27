@@ -13,6 +13,7 @@ import AdminRoute from "./AdminRoute";
 import AddDoctors from "../Pages/Dashboard/AddDoctors/AddDoctors";
 import ManageDoctors from "../Pages/Dashboard/ManageDoctors/ManageDoctors";
 import AllBookings from "../Pages/Dashboard/AllBookings/AllBookings";
+import Contack from "../Componants/Contack/Contack";
 
 export const router = createBrowserRouter([
   {
@@ -40,8 +41,15 @@ export const router = createBrowserRouter([
         path: "/signup",
         element: <Signup />,
       },
+      {
+        path: "/contact",
+        element: <Contack />,
+      },
+
+
     ],
   },
+
   {
     path: "/dashboard",
     element: (

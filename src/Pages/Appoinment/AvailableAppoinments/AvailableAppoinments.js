@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { format } from "date-fns";
 import ServiceCard from "./ServiceCard";
 import BookingModal from "../BookingModal/BookingModal";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../../../Componants/Spinner/Spinner";
+import { format } from "date-fns";
+import { useState } from "react";
 
 const AvailableAppoinments = ({ selectedDate }) => {
   const date = format(selectedDate, "PP");

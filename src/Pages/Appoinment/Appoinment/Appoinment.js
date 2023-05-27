@@ -3,7 +3,7 @@ import AppoinmentBanner from "../Banner/AppoinmentBanner";
 import AvailableAppoinments from "../AvailableAppoinments/AvailableAppoinments";
 
 const Appoinment = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(new Date() );
   return (
     <div className="mx-5">
       <AppoinmentBanner

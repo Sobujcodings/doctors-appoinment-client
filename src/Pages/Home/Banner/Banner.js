@@ -3,6 +3,8 @@ import chair from "../../../assets/images/chair.png";
 import bg from "../../../assets/images/bg.png";
 import PrimaryBtn from "../../../Componants/PrimaryBtn/PrimaryBtn";
 import { Link } from "react-router-dom";
+import Marquee from "react-fast-marquee";
+import './Banner.css'
 
 const Banner = () => {
   return (
@@ -29,6 +31,11 @@ const Banner = () => {
           </div>
         </div>
       </div>
+
+      {/* <p className="text-center  bannerWidth text-red-500 mt-6 py-2 border mx-auto">Your New Smile Starts Here</p> */}
+      <Marquee className="bannerWidth">
+      <p className="text-center text-cyan-500 mt-6 py-2 ">Holy Gental Dental, Your New Smile Starts Here &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; &ensp; &ensp; &ensp; &ensp; </p>
+      </Marquee>
     </>
   );
 };
