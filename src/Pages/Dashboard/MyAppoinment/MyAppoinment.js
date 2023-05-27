@@ -23,10 +23,10 @@ const MyAppoinment = () => {
   }
   return (
     <div className="mt-[7%]">
-      <h2 className="text-3xl mb-5">My Appoinment</h2>
+      <h2 className="text-3xl mb-5 ml-2">My Appoinment</h2>
 
-      <div className="overflow-x-auto">
-        <table className="table w-full">
+      <div className="overflow-x-auto pr-10">
+        <table className="table w-full ">
           <thead>
             <tr>
               <th></th>
@@ -36,7 +36,7 @@ const MyAppoinment = () => {
               <th>Time</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="">
             {bookings?.map((booking, index) => (
                 <tr key={index}>
                 <th>{index + 1}</th>

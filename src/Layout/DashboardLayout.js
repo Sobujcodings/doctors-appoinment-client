@@ -9,7 +9,7 @@ const DashboardLayout = () => {
   const [isAdmin] = useAdmin(user?.email);
 
   const list = (
-    <ul className="menu p-4 mt-14 w-80 bg-base-100 text-base-content">
+    <ul className="menu p-4 mt-14 w-80 bg-gray-100 text-base-content">
       <li>
         <Link to="/dashboard">My Appoinments</Link>
       </li>
@@ -32,7 +32,7 @@ const DashboardLayout = () => {
     </ul>
   );
   return (
-    <div>
+    <div className="bg-gray-100">
       <Navbar />
 
       <div className="drawer drawer-mobile">
@@ -41,10 +41,10 @@ const DashboardLayout = () => {
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className="drawer-content">
+        <div className="drawer-content ">
           <Outlet />
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side ">
           <label htmlFor="dashboard-toggle" className="drawer-overlay"></label>
           {list}
         </div>
