@@ -28,7 +28,7 @@ const Contack = () => {
                 }
             })
     }
-
+       
 
     return (
         <div className='pt-24 pb-8 w-82 flex justify-center align-middle '>

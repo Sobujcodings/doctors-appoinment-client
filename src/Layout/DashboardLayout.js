@@ -9,7 +9,7 @@ const DashboardLayout = () => {
   const [isAdmin] = useAdmin(user?.email);
 
   const list = (
-    <ul className="menu p-4 mt-14 w-80 bg-gray-100 text-base-content">
+    <ul className="menu p-4 mt-14 w-80 bg-primary text-base-content">
       <li>
         <Link to="/dashboard">My Appoinments</Link>
       </li>
@@ -32,7 +32,7 @@ const DashboardLayout = () => {
     </ul>
   );
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 bg-prmary">
       <Navbar />
 
       <div className="drawer drawer-mobile">

@@ -22,10 +22,10 @@ const MyAppoinment = () => {
     return <Spinner />;
   }
   return (
-    <div className="mt-[7%]">
-      <h2 className="text-3xl mb-5 ml-2">My Appoinment</h2>
+    <div className="mt-[7%] bg-primary h-full">
+      <h2 className="text-3xl mb-5 m-l2">My Appoinment</h2>
 
-      <div className="overflow-x-auto pr-10">
+      <div className="overflow-x-auto pl-5 pr-10">
         <table className="table w-full ">
           <thead>
             <tr>
